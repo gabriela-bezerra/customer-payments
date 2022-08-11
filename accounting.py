@@ -62,21 +62,23 @@
 
 
 def customer_payment(file):
+    """ Calculate cost of melons and determine who has underpaid. """
 
-    customer_order = open(file)
+    customer_order = open(file)  # opne the file
 
     melon_cost = 1.00
 
-    for line in customer_order:
-        line = line.rstrip()
-        words = line.split("|")
+    for line in customer_order:  # iterate over lines in file
+        line = line.rstrip()  # remove white spaces
+        words = line.split("|")  # split line with | turning it into a list
 
-        customer_name = words[1]
-        order = float(words[2])
+        customer_name = words[1]  # assign name at index 1
+        order = float(words[2])  # assign order at index 2 and make it a float
+        # assign amount paid at index 3 and make it a float
         paid = float(words[3])
-        expected = order * melon_cost
+        expected = order * melon_cost  # calculate the correct cost
 
-        if paid != expected:
+        if paid != expected:  # check if amount paid is equal to amount expected
             print(f"{customer_name} paid ${paid},",
                   f"expected ${expected}")
 
